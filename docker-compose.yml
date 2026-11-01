@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  timescaledb:
+    image: timescale/timescaledb:latest-pg16
+    container_name: agriedge_timescaledb
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-agriedge}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-agriedge}
+      POSTGRES_DB: ${POSTGRES_DB:-agriedge}
+    ports:
+      - "5432:5432"
+    volumes:
+      - timescaledb_data:/var/lib/postgresql/data
+      - ./backend/migrations:/docker-entrypoint-initdb.d:ro
+
+  mosquitto:
+    image: eclipse-mosquitto:2
+    container_name: agriedge_mosquitto
+    restart: always
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ./mosquitto/config/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      - mosquitto_data:/mosquitto/data
+      - mosquitto_log:/mosquitto/log
+
+volumes:
+  timescaledb_data:
+  mosquitto_data:
+  mosquitto_log:

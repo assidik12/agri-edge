@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+scratch/
+.kilo/
+.pio/
+ml/data/*.csv
+ml/models/*.tflite
+ml/models/*.h
+backend/bin/
+backend/server
+backend/server.exe

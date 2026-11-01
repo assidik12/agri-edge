@@ -1,0 +1,9 @@
+{
+  "mae_sec": 6.597,
+  "mae_pct_of_max": 2.199,
+  "model_size_kb": 3.242,
+  "pc_latency_ms_avg": 0.0036,
+  "pass_mae": true,
+  "pass_latency_pc": true,
+  "note": "Latensi PC bukan latensi ESP32; ukur ulang di device."
+}
